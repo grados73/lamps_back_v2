@@ -158,12 +158,29 @@ void loop() {
       case wylaczStop: // WYLACZANIE STOPU - LAMPA TYL
         clearLed12t();
         flagaTylStop = 0;
-        if (flagaTylDzien = 0) aktualneDaneLampaTyl = 0;   //WERSJA Z WYLACZANIEM SWIATEL DZIENNYCH5
-        if (flagaTylDzien = 1) aktualneDaneLampaTyl = 5;
-        if (flagaTylCofanie == 1) aktualneDaneLampaTyl = 7;
+        if (flagaTylDzien = 0) 
+        {
+          if(flagaTylCofanie == 1) aktualneDaneLampaTyl = 7;
+        }
+          else aktualneDaneLampaTyl = 0;   //WERSJA Z WYLACZANIEM SWIATEL DZIENNYCH5
+        
+        if (flagaTylDzien = 1) 
+        {
+          if(flagaTylCofanie == 1) aktualneDaneLampaTyl = 7;
+        }
+          else aktualneDaneLampaTyl = 5;
+        
         if (flagaKierunek == 1)  { // po wylaczeniu stopu, jesli byl zapalony kierunek, to trzeba go spowrotem zapalic
-          aktualneDaneLampaTyl = ktoryKierunek;
-          aktualneZadanieKierunki = ktoryKierunek; ;
+          if(flagaTylCofanie == 0)
+            {
+            aktualneDaneLampaTyl = ktoryKierunek;
+            aktualneZadanieKierunki = ktoryKierunek; 
+            }
+            else
+            {
+              aktualneDaneLampaTyl = (ktoryKierunek*10+1); // 6->61, 9->91
+              aktualneZadanieKierunki = ktoryKierunek; 
+            }
         }
         if (flagaAwaryjne == 1) {
           swiatla_awaryjne(); // wersja z zwyklymi kierunkami
