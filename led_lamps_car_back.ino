@@ -158,13 +158,13 @@ void loop() {
       case wylaczStop: // WYLACZANIE STOPU - LAMPA TYL
         clearLed12t();
         flagaTylStop = 0;
-        if (flagaTylDzien = 0) 
+        if (flagaTylDzien == 0) 
         {
           if(flagaTylCofanie == 1) aktualneDaneLampaTyl = 7;
         }
           else aktualneDaneLampaTyl = 0;   //WERSJA Z WYLACZANIEM SWIATEL DZIENNYCH5
         
-        if (flagaTylDzien = 1) 
+        if (flagaTylDzien == 1) 
         {
           if(flagaTylCofanie == 1) aktualneDaneLampaTyl = 7;
         }
